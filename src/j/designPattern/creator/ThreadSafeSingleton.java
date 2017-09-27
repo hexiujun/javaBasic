@@ -23,7 +23,7 @@ package j.designPattern.creator;
  *     -->>
  *     解决方案：使用内部类来维护单例的实现。
  *     原理：JVM内部机制能保证当一个类被加载的时候，该加载过程是线程互斥的。
- *     @see j.designPattern.creator.PefectSingleton 类, 完美的单利模式的构建。
+ *     @see PerfectSingleton 类, 完美的单利模式的构建。
  */
 public class ThreadSafeSingleton {
     // 持有私有静态实例，防止被引用，赋值为null，目的是实现延迟加载

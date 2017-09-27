@@ -2,13 +2,14 @@ package j.concurrency.cancellationAndShutdown;
 
 import java.math.BigInteger;
 import java.util.List;
-
-import static java.util.concurrent.TimeUnit.SECONDS;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by j on 2017/8/15.
+ * 取消策略需要定义：How， When， What
+ * 取消策略：客户代码通过调用cancel来请求取消任务（How），任务每次搜索素数前查询取消状态（When），一旦取消状态为true结束任务（What）。
  */
-public class Test {
+public class PrimeGeneratorTest {
     public static void main(String[] args) {
         try {
             System.out.println(aSecondOfPrimes());
@@ -22,7 +23,7 @@ public class Test {
         new Thread(generator).start();
 
         try {
-            SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(1);
         } finally {
             generator.cancel();
         }
